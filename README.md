@@ -5,12 +5,12 @@ RicardoGoBang
 
 暂时只完成基本界面。
 
-![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot1.png)
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot1.png)
 
-![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot2.png)
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot2.png)
 
-![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot3.png)
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot3.png)
 
-![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot4.png)
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot4.png)
 
-![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot5.png)
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot5.png)
