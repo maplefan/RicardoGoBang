@@ -4,8 +4,13 @@ RicardoGoBang
 该软件跨Windows，MacOS，Linux三大主流桌面操作系统。
 
 暂时只完成基本界面。
+
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot1.png)
+
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot2.png)
+
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot3.png)
+
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot4.png)
+
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/SceenShot5.png)
