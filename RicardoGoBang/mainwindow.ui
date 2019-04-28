@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>610</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>610</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>610</height>
+   </size>
+  </property>
+  <property name="baseSize">
+   <size>
+    <width>800</width>
+    <height>600</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>RicardoGoBang</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <widget class="QPushButton" name="btnPVP">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>150</y>
+      <width>200</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>200</width>
+      <height>70</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+         border: 2px solid #8f8f91;
+         border-radius: 20px;
+         background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                           stop: 0 #00A1F1, stop: 1 #0072C6);
+     }
+ 
+     QPushButton:pressed {
+         background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                           stop: 0 #dadbde, stop: 1 #f6f7fa);
+     }
+ QPushButton:default {
+         border-color: navy; /* 使得按钮显示变得更加突出 */
+     }
+</string>
+    </property>
+    <property name="text">
+     <string>双人对战</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnPVM">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>250</y>
+      <width>200</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>200</width>
+      <height>70</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+         border: 2px solid #8f8f91;
+         border-radius: 20px;
+         background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                           stop: 0 #00A1F1, stop: 1 #0072C6);
+     }
+ 
+     QPushButton:pressed {
+         background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                           stop: 0 #dadbde, stop: 1 #f6f7fa);
+     }
+ QPushButton:default {
+         border-color: navy; /* 使得按钮显示变得更加突出 */
+     }
+</string>
+    </property>
+    <property name="text">
+     <string>人机对战</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnQuit">
+    <property name="geometry">
+     <rect>
+      <x>300</x>
+      <y>350</y>
+      <width>200</width>
+      <height>70</height>
+     </rect>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>200</width>
+      <height>70</height>
+     </size>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+      <pointsize>20</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton {
+         border: 2px solid #8f8f91;
+         border-radius: 20px;
+         background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                           stop: 0 #00A1F1, stop: 1 #0072C6);
+     }
+ 
+     QPushButton:pressed {
+         background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                           stop: 0 #dadbde, stop: 1 #f6f7fa);
+     }
+ QPushButton:default {
+         border-color: navy; /* 使得按钮显示变得更加突出 */
+     }
+</string>
+    </property>
+    <property name="text">
+     <string>退出游戏</string>
+    </property>
+   </widget>
+  </widget>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
