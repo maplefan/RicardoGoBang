@@ -7,20 +7,21 @@ DialogAbout::DialogAbout(QWidget *parent) :
 {
     ui->setupUi(this);
     QLabel* labelSourceCode =new QLabel(this);
-    labelSourceCode->setGeometry(111,170,200,21);
+    labelSourceCode->setGeometry(111,170,300,21);
     labelSourceCode->setOpenExternalLinks(true);
     labelSourceCode->setText("<a href=\"https://github.com/maplefan/RicardoGoBang\">源代码");
     labelSourceCode->show();
 
     QLabel* labelMaplefan =new QLabel(this);
-    labelMaplefan->setGeometry(111,240,200,21);
+    labelMaplefan->setGeometry(111,240,300,21);
+
     labelMaplefan->setOpenExternalLinks(true);
     labelMaplefan->setText("<a href=\"https://maplefan.com\">maplefan.com");
     labelMaplefan->show();
 
 
     QLabel* labelGithub =new QLabel(this);
-    labelGithub->setGeometry(111,260,200,21);
+    labelGithub->setGeometry(111,260,300,21);
     labelGithub->setOpenExternalLinks(true);
     labelGithub->setText("<a href=\"https://github.com/maplefan\">github.com/maplefan");
     labelGithub->show();

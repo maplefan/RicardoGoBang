@@ -33,6 +33,8 @@ public:
     QLabel *label_step;
     QLabel *label_rate;
     QWidget *widget_chess;
+    QLabel *label;
+    QLabel *label_2;
 
     void setupUi(QMainWindow *PVPWindow)
     {
@@ -89,10 +91,7 @@ public:
         btn_back = new QPushButton(centralwidget);
         btn_back->setObjectName(QStringLiteral("btn_back"));
         btn_back->setGeometry(QRect(640, 480, 120, 50));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Microsoft Sans Serif"));
-        font1.setPointSize(18);
-        btn_back->setFont(font1);
+        btn_back->setFont(font);
         btn_back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "         border: 2px solid #8f8f91;\n"
 "         border-radius: 20px;\n"
@@ -151,21 +150,31 @@ public:
         label_step->setGeometry(QRect(630, 20, 140, 50));
         label_step->setFont(font);
         label_step->setStyleSheet(QStringLiteral("color:#f65314"));
+        label_step->setAlignment(Qt::AlignCenter);
         label_rate = new QLabel(centralwidget);
         label_rate->setObjectName(QStringLiteral("label_rate"));
-        label_rate->setGeometry(QRect(630, 80, 140, 50));
-        QFont font2;
-        font2.setFamily(QStringLiteral("Microsoft Sans Serif"));
-        font2.setPointSize(12);
-        font2.setBold(true);
-        font2.setWeight(75);
-        label_rate->setFont(font2);
+        label_rate->setGeometry(QRect(619, 79, 161, 51));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Microsoft Sans Serif"));
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label_rate->setFont(font1);
         label_rate->setStyleSheet(QStringLiteral("color:#f65314"));
+        label_rate->setAlignment(Qt::AlignCenter);
         widget_chess = new QWidget(centralwidget);
         widget_chess->setObjectName(QStringLiteral("widget_chess"));
         widget_chess->setGeometry(QRect(0, 0, 600, 610));
         widget_chess->setMinimumSize(QSize(600, 610));
         widget_chess->setMaximumSize(QSize(600, 610));
+        label = new QLabel(centralwidget);
+        label->setObjectName(QStringLiteral("label"));
+        label->setGeometry(QRect(620, 160, 60, 16));
+        label->setStyleSheet(QStringLiteral("color:#1FB922"));
+        label_2 = new QLabel(centralwidget);
+        label_2->setObjectName(QStringLiteral("label_2"));
+        label_2->setGeometry(QRect(720, 160, 60, 16));
+        label_2->setStyleSheet(QStringLiteral("color:#1FB922"));
         PVPWindow->setCentralWidget(centralwidget);
 
         retranslateUi(PVPWindow);
@@ -184,6 +193,8 @@ public:
         label_step->setText(QApplication::translate("PVPWindow", "STEP\357\274\232 0 \346\255\245", nullptr));
         label_rate->setText(QApplication::translate("PVPWindow", "\345\275\223\345\211\215\350\203\234\347\216\207\357\274\232\n"
 "\347\231\275\357\274\232\351\273\221 = 50% \357\274\232 50%", nullptr));
+        label->setText(QApplication::translate("PVPWindow", "\347\216\251\345\256\2661\357\274\232", nullptr));
+        label_2->setText(QApplication::translate("PVPWindow", "\347\216\251\345\256\2662:", nullptr));
     } // retranslateUi
 
 };

@@ -3,7 +3,11 @@
 
 #include <QWidget>
 #include <QPainter>
+#include <QMouseEvent>
 #include <QPen>
+#include <game.h>
+#include <vector>
+#include <dialoggameover.h>
 namespace Ui {
 class Chess;
 }
@@ -16,9 +20,34 @@ public:
     explicit Chess(QWidget *parent = 0);
     ~Chess();
 
+    void send_emit();
+    int getChessBoard(int x,int y);
+    void setChessBoard(int x,int y,int value);
+    bool deleteChessBoardXY();
+    void addChessBoardXY(int x,int y);
+    void clearChessBoard();
+    void setStep(int step);
+    int getStep();
+    void setWhoWin(int);
+    bool isWin(int row, int col);
+    void gameOver(int ,int);
+
+signals:
+    void start_emit(int);
+
 private:
     Ui::Chess *ui;
+    int whoWin;
+    int moveX,moveY;
+    int preX,preY;//上一步
+    int step ;//步数
     void paintEvent(QPaintEvent *);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent* event);
+    int chessBoard[15][15];//棋盘
+    std::vector<int>chessBoardX;//记录步数的X
+    std::vector<int>chessBoardY;//记录步数的Y
+
 };
 
 #endif // CHESS_H

@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <dialogabout.h>
+#include <dialogchoosepiece.h>
 #include <chess.h>
+#include <game.h>
 
 namespace Ui {
 class PVMWindow;
@@ -25,6 +27,8 @@ private slots:
     void on_btn_back_clicked();
 
     void on_btn_about_clicked();
+
+    void on_btn_start_clicked();
 
 private:
     Ui::PVMWindow *ui;

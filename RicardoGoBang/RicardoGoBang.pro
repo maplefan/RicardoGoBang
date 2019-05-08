@@ -27,21 +27,29 @@ SOURCES += \
     pvpwindow.cpp \
     pvmwindow.cpp \
     dialogabout.cpp \
-    chess.cpp
+    chess.cpp \
+    game.cpp \
+    dialogchoosepiece.cpp \
+    dialoggameover.cpp
 
 HEADERS += \
         mainwindow.h \
     pvpwindow.h \
     pvmwindow.h \
     dialogabout.h \
-    chess.h
+    chess.h \
+    game.h \
+    dialogchoosepiece.h \
+    dialoggameover.h
 
 FORMS += \
         mainwindow.ui \
     pvpwindow.ui \
     pvmwindow.ui \
     dialogabout.ui \
-    chess.ui
+    chess.ui \
+    dialogchoosepiece.ui \
+    dialoggameover.ui
 
 DISTFILES += \
     logo.icns

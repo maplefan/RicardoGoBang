@@ -3,7 +3,7 @@ RicardoGoBang
 由C++及QT框架完成，无后台通信，AI具有一定的棋力，且能即时显示当前局势下黑子与白子对应的胜率。
 该软件跨Windows，MacOS，Linux三大主流桌面操作系统。
 
-暂时只完成基本界面。
+暂时只完成双人对战部分（除实时胜率）。
 
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot1.png)
 
@@ -14,3 +14,7 @@ RicardoGoBang
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot4.png)
 
 ![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot5.png)
+
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot6.png)
+
+![Image text](https://github.com/maplefan/RicardoGoBang/blob/master/ScreenShot/ScreenShot7.png)

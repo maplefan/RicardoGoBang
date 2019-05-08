@@ -39,6 +39,8 @@
      <font>
       <family>Microsoft Sans Serif</family>
       <pointsize>18</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
@@ -237,14 +239,17 @@
     <property name="text">
      <string>STEP： 0 步</string>
     </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
    </widget>
    <widget class="QLabel" name="label_rate">
     <property name="geometry">
      <rect>
-      <x>630</x>
-      <y>80</y>
-      <width>140</width>
-      <height>50</height>
+      <x>609</x>
+      <y>89</y>
+      <width>171</width>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">
@@ -261,6 +266,9 @@
     <property name="text">
      <string>当前胜率：
 白：黑 = 50% ： 50%</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QWidget" name="widget_chess" native="true">

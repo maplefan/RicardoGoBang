@@ -51,6 +51,8 @@ public:
         QFont font;
         font.setFamily(QStringLiteral("Microsoft Sans Serif"));
         font.setPointSize(18);
+        font.setBold(true);
+        font.setWeight(75);
         btn_back->setFont(font);
         btn_back->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "         border: 2px solid #8f8f91;\n"
@@ -70,12 +72,7 @@ public:
         btn_undo = new QPushButton(centralwidget);
         btn_undo->setObjectName(QStringLiteral("btn_undo"));
         btn_undo->setGeometry(QRect(640, 360, 120, 50));
-        QFont font1;
-        font1.setFamily(QStringLiteral("Microsoft Sans Serif"));
-        font1.setPointSize(18);
-        font1.setBold(true);
-        font1.setWeight(75);
-        btn_undo->setFont(font1);
+        btn_undo->setFont(font);
         btn_undo->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "         border: 2px solid #8f8f91;\n"
 "         border-radius: 20px;\n"
@@ -94,7 +91,7 @@ public:
         btn_giveup = new QPushButton(centralwidget);
         btn_giveup->setObjectName(QStringLiteral("btn_giveup"));
         btn_giveup->setGeometry(QRect(640, 420, 120, 50));
-        btn_giveup->setFont(font1);
+        btn_giveup->setFont(font);
         btn_giveup->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "         border: 2px solid #8f8f91;\n"
 "         border-radius: 20px;\n"
@@ -113,7 +110,7 @@ public:
         btn_start = new QPushButton(centralwidget);
         btn_start->setObjectName(QStringLiteral("btn_start"));
         btn_start->setGeometry(QRect(640, 300, 120, 50));
-        btn_start->setFont(font1);
+        btn_start->setFont(font);
         btn_start->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "         border: 2px solid #8f8f91;\n"
 "         border-radius: 20px;\n"
@@ -132,7 +129,7 @@ public:
         btn_about = new QPushButton(centralwidget);
         btn_about->setObjectName(QStringLiteral("btn_about"));
         btn_about->setGeometry(QRect(640, 540, 120, 50));
-        btn_about->setFont(font1);
+        btn_about->setFont(font);
         btn_about->setStyleSheet(QString::fromUtf8("QPushButton {\n"
 "         border: 2px solid #8f8f91;\n"
 "         border-radius: 20px;\n"
@@ -151,18 +148,20 @@ public:
         label_step = new QLabel(centralwidget);
         label_step->setObjectName(QStringLiteral("label_step"));
         label_step->setGeometry(QRect(630, 20, 140, 50));
-        label_step->setFont(font1);
+        label_step->setFont(font);
         label_step->setStyleSheet(QStringLiteral("color:#f65314"));
+        label_step->setAlignment(Qt::AlignCenter);
         label_rate = new QLabel(centralwidget);
         label_rate->setObjectName(QStringLiteral("label_rate"));
-        label_rate->setGeometry(QRect(630, 80, 140, 50));
-        QFont font2;
-        font2.setFamily(QStringLiteral("Microsoft Sans Serif"));
-        font2.setPointSize(12);
-        font2.setBold(true);
-        font2.setWeight(75);
-        label_rate->setFont(font2);
+        label_rate->setGeometry(QRect(609, 89, 171, 41));
+        QFont font1;
+        font1.setFamily(QStringLiteral("Microsoft Sans Serif"));
+        font1.setPointSize(12);
+        font1.setBold(true);
+        font1.setWeight(75);
+        label_rate->setFont(font1);
         label_rate->setStyleSheet(QStringLiteral("color:#f65314"));
+        label_rate->setAlignment(Qt::AlignCenter);
         widget_chess = new QWidget(centralwidget);
         widget_chess->setObjectName(QStringLiteral("widget_chess"));
         widget_chess->setGeometry(QRect(0, 0, 600, 600));

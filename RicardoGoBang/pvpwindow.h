@@ -3,7 +3,9 @@
 
 #include <QMainWindow>
 #include <dialogabout.h>
+#include <dialogchoosepiece.h>
 #include <chess.h>
+#include <game.h>
 
 namespace Ui {
 class PVPWindow;
@@ -22,12 +24,25 @@ signals:
 
 private slots:
 
+    void read_emit(int);
+
+    void restartGame();
+
     void on_btn_about_clicked();
 
     void on_btn_back_clicked();
 
+    void on_btn_start_clicked();
+
+    void on_btn_undo_clicked();
+
+
+    void on_btn_giveup_clicked();
+
 private:
     Ui::PVPWindow *ui;
+    Chess *chess;
+    void paintEvent(QPaintEvent *);
 };
 
 #endif // PVPWINDOW_H

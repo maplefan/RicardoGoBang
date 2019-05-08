@@ -55,22 +55,32 @@ SOURCES       = ../RicardoGoBang/main.cpp \
 		../RicardoGoBang/pvpwindow.cpp \
 		../RicardoGoBang/pvmwindow.cpp \
 		../RicardoGoBang/dialogabout.cpp \
-		../RicardoGoBang/chess.cpp moc_mainwindow.cpp \
+		../RicardoGoBang/chess.cpp \
+		../RicardoGoBang/game.cpp \
+		../RicardoGoBang/dialogchoosepiece.cpp \
+		../RicardoGoBang/dialoggameover.cpp moc_mainwindow.cpp \
 		moc_pvpwindow.cpp \
 		moc_pvmwindow.cpp \
 		moc_dialogabout.cpp \
-		moc_chess.cpp
+		moc_chess.cpp \
+		moc_dialogchoosepiece.cpp \
+		moc_dialoggameover.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		pvpwindow.o \
 		pvmwindow.o \
 		dialogabout.o \
 		chess.o \
+		game.o \
+		dialogchoosepiece.o \
+		dialoggameover.o \
 		moc_mainwindow.o \
 		moc_pvpwindow.o \
 		moc_pvmwindow.o \
 		moc_dialogabout.o \
-		moc_chess.o
+		moc_chess.o \
+		moc_dialogchoosepiece.o \
+		moc_dialoggameover.o
 DIST          = ../RicardoGoBang/logo.icns \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/qdevice.pri \
@@ -207,6 +217,7 @@ DIST          = ../RicardoGoBang/logo.icns \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf \
+		../RicardoGoBang/.qmake.stash \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf \
@@ -238,12 +249,18 @@ DIST          = ../RicardoGoBang/logo.icns \
 		../RicardoGoBang/pvpwindow.h \
 		../RicardoGoBang/pvmwindow.h \
 		../RicardoGoBang/dialogabout.h \
-		../RicardoGoBang/chess.h ../RicardoGoBang/main.cpp \
+		../RicardoGoBang/chess.h \
+		../RicardoGoBang/game.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../RicardoGoBang/dialoggameover.h ../RicardoGoBang/main.cpp \
 		../RicardoGoBang/mainwindow.cpp \
 		../RicardoGoBang/pvpwindow.cpp \
 		../RicardoGoBang/pvmwindow.cpp \
 		../RicardoGoBang/dialogabout.cpp \
-		../RicardoGoBang/chess.cpp
+		../RicardoGoBang/chess.cpp \
+		../RicardoGoBang/game.cpp \
+		../RicardoGoBang/dialogchoosepiece.cpp \
+		../RicardoGoBang/dialoggameover.cpp
 QMAKE_TARGET  = RicardoGoBang
 DESTDIR       = 
 TARGET        = RicardoGoBang.app/Contents/MacOS/RicardoGoBang
@@ -257,7 +274,7 @@ EXPORT_ARCH_ARGS = $(foreach arch, $(if $(EXPORT_ACTIVE_ARCHS), $(EXPORT_ACTIVE_
 first: all
 ####### Build rules
 
-$(TARGET): ui_mainwindow.h ui_pvpwindow.h ui_pvmwindow.h ui_dialogabout.h ui_chess.h $(OBJECTS)  
+$(TARGET): ui_mainwindow.h ui_pvpwindow.h ui_pvmwindow.h ui_dialogabout.h ui_chess.h ui_dialogchoosepiece.h ui_dialoggameover.h $(OBJECTS)  
 	@test -d RicardoGoBang.app/Contents/MacOS/ || mkdir -p RicardoGoBang.app/Contents/MacOS/
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
@@ -396,6 +413,7 @@ Makefile: ../RicardoGoBang/RicardoGoBang.pro ../../Qt5.10.1/5.10.1/clang_64/mksp
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf \
@@ -563,6 +581,7 @@ Makefile: ../RicardoGoBang/RicardoGoBang.pro ../../Qt5.10.1/5.10.1/clang_64/mksp
 ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf:
@@ -629,9 +648,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../RicardoGoBang/mainwindow.h ../RicardoGoBang/pvpwindow.h ../RicardoGoBang/pvmwindow.h ../RicardoGoBang/dialogabout.h ../RicardoGoBang/chess.h $(DISTDIR)/
-	$(COPY_FILE) --parents ../RicardoGoBang/main.cpp ../RicardoGoBang/mainwindow.cpp ../RicardoGoBang/pvpwindow.cpp ../RicardoGoBang/pvmwindow.cpp ../RicardoGoBang/dialogabout.cpp ../RicardoGoBang/chess.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../RicardoGoBang/mainwindow.ui ../RicardoGoBang/pvpwindow.ui ../RicardoGoBang/pvmwindow.ui ../RicardoGoBang/dialogabout.ui ../RicardoGoBang/chess.ui $(DISTDIR)/
+	$(COPY_FILE) --parents ../RicardoGoBang/mainwindow.h ../RicardoGoBang/pvpwindow.h ../RicardoGoBang/pvmwindow.h ../RicardoGoBang/dialogabout.h ../RicardoGoBang/chess.h ../RicardoGoBang/game.h ../RicardoGoBang/dialogchoosepiece.h ../RicardoGoBang/dialoggameover.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../RicardoGoBang/main.cpp ../RicardoGoBang/mainwindow.cpp ../RicardoGoBang/pvpwindow.cpp ../RicardoGoBang/pvmwindow.cpp ../RicardoGoBang/dialogabout.cpp ../RicardoGoBang/chess.cpp ../RicardoGoBang/game.cpp ../RicardoGoBang/dialogchoosepiece.cpp ../RicardoGoBang/dialoggameover.cpp $(DISTDIR)/
+	$(COPY_FILE) --parents ../RicardoGoBang/mainwindow.ui ../RicardoGoBang/pvpwindow.ui ../RicardoGoBang/pvmwindow.ui ../RicardoGoBang/dialogabout.ui ../RicardoGoBang/chess.ui ../RicardoGoBang/dialogchoosepiece.ui ../RicardoGoBang/dialoggameover.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -641,6 +660,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r RicardoGoBang.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -662,9 +682,9 @@ compiler_moc_predefs_clean:
 moc_predefs.h: ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/data/dummy.cpp
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -g -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk -mmacosx-version-min=10.10 -Wall -W -dM -E -o moc_predefs.h ../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_mainwindow.cpp moc_pvpwindow.cpp moc_pvmwindow.cpp moc_dialogabout.cpp moc_chess.cpp
+compiler_moc_header_make_all: moc_mainwindow.cpp moc_pvpwindow.cpp moc_pvmwindow.cpp moc_dialogabout.cpp moc_chess.cpp moc_dialogchoosepiece.cpp moc_dialoggameover.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_mainwindow.cpp moc_pvpwindow.cpp moc_pvmwindow.cpp moc_dialogabout.cpp moc_chess.cpp
+	-$(DEL_FILE) moc_mainwindow.cpp moc_pvpwindow.cpp moc_pvmwindow.cpp moc_dialogabout.cpp moc_chess.cpp moc_dialogchoosepiece.cpp moc_dialoggameover.cpp
 moc_mainwindow.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QPushButton \
@@ -677,13 +697,18 @@ moc_mainwindow.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Heade
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		../RicardoGoBang/pvmwindow.h \
 		../RicardoGoBang/mainwindow.h \
 		moc_predefs.h \
@@ -695,13 +720,19 @@ moc_pvpwindow.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Header
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		../RicardoGoBang/pvpwindow.h \
 		moc_predefs.h \
 		../../Qt5.10.1/5.10.1/clang_64/bin/moc
@@ -712,13 +743,19 @@ moc_pvmwindow.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Header
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		../RicardoGoBang/pvmwindow.h \
 		moc_predefs.h \
 		../../Qt5.10.1/5.10.1/clang_64/bin/moc
@@ -735,20 +772,39 @@ moc_chess.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QW
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		../RicardoGoBang/chess.h \
 		moc_predefs.h \
 		../../Qt5.10.1/5.10.1/clang_64/bin/moc
 	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/apple/Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang -I/Users/apple/RicardoGoBang/RicardoGoBang -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/apple/Qt5.10.1/5.10.1/clang_64/lib ../RicardoGoBang/chess.h -o moc_chess.cpp
 
+moc_dialogchoosepiece.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		moc_predefs.h \
+		../../Qt5.10.1/5.10.1/clang_64/bin/moc
+	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/apple/Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang -I/Users/apple/RicardoGoBang/RicardoGoBang -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/apple/Qt5.10.1/5.10.1/clang_64/lib ../RicardoGoBang/dialogchoosepiece.h -o moc_dialogchoosepiece.cpp
+
+moc_dialoggameover.cpp: ../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialoggameover.h \
+		moc_predefs.h \
+		../../Qt5.10.1/5.10.1/clang_64/bin/moc
+	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/moc $(DEFINES) --include ./moc_predefs.h -I/Users/apple/Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang -I/Users/apple/RicardoGoBang/RicardoGoBang -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers -I/Users/apple/Qt5.10.1/5.10.1/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1 -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include -I/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.13.sdk/usr/include -F/Users/apple/Qt5.10.1/5.10.1/clang_64/lib ../RicardoGoBang/dialoggameover.h -o moc_dialoggameover.cpp
+
 compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_mainwindow.h ui_pvpwindow.h ui_pvmwindow.h ui_dialogabout.h ui_chess.h
+compiler_uic_make_all: ui_mainwindow.h ui_pvpwindow.h ui_pvmwindow.h ui_dialogabout.h ui_chess.h ui_dialogchoosepiece.h ui_dialoggameover.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_mainwindow.h ui_pvpwindow.h ui_pvmwindow.h ui_dialogabout.h ui_chess.h
+	-$(DEL_FILE) ui_mainwindow.h ui_pvpwindow.h ui_pvmwindow.h ui_dialogabout.h ui_chess.h ui_dialogchoosepiece.h ui_dialoggameover.h
 ui_mainwindow.h: ../RicardoGoBang/mainwindow.ui \
 		../../Qt5.10.1/5.10.1/clang_64/bin/uic
 	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/uic ../RicardoGoBang/mainwindow.ui -o ui_mainwindow.h
@@ -768,6 +824,14 @@ ui_dialogabout.h: ../RicardoGoBang/dialogabout.ui \
 ui_chess.h: ../RicardoGoBang/chess.ui \
 		../../Qt5.10.1/5.10.1/clang_64/bin/uic
 	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/uic ../RicardoGoBang/chess.ui -o ui_chess.h
+
+ui_dialogchoosepiece.h: ../RicardoGoBang/dialogchoosepiece.ui \
+		../../Qt5.10.1/5.10.1/clang_64/bin/uic
+	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/uic ../RicardoGoBang/dialogchoosepiece.ui -o ui_dialogchoosepiece.h
+
+ui_dialoggameover.h: ../RicardoGoBang/dialoggameover.ui \
+		../../Qt5.10.1/5.10.1/clang_64/bin/uic
+	/Users/apple/Qt5.10.1/5.10.1/clang_64/bin/uic ../RicardoGoBang/dialoggameover.ui -o ui_dialoggameover.h
 
 compiler_rez_source_make_all:
 compiler_rez_source_clean:
@@ -794,13 +858,18 @@ main.o: ../RicardoGoBang/main.cpp ../RicardoGoBang/mainwindow.h \
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		../RicardoGoBang/pvmwindow.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qapplication.h \
@@ -821,13 +890,18 @@ mainwindow.o: ../RicardoGoBang/mainwindow.cpp ../RicardoGoBang/mainwindow.h \
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		../RicardoGoBang/pvmwindow.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../RicardoGoBang/mainwindow.cpp
@@ -838,13 +912,19 @@ pvpwindow.o: ../RicardoGoBang/pvpwindow.cpp ../RicardoGoBang/pvpwindow.h \
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		ui_pvpwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pvpwindow.o ../RicardoGoBang/pvpwindow.cpp
 
@@ -854,13 +934,19 @@ pvmwindow.o: ../RicardoGoBang/pvmwindow.cpp ../RicardoGoBang/pvmwindow.h \
 		../RicardoGoBang/dialogabout.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
 		../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
+		../RicardoGoBang/game.h \
 		ui_pvmwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o pvmwindow.o ../RicardoGoBang/pvmwindow.cpp
 
@@ -875,10 +961,41 @@ chess.o: ../RicardoGoBang/chess.cpp ../RicardoGoBang/chess.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPainter \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpainter.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QMouseEvent \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qevent.h \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/QPen \
 		../../Qt5.10.1/5.10.1/clang_64/lib/QtGui.framework/Headers/qpen.h \
-		ui_chess.h
+		../RicardoGoBang/game.h \
+		ui_chess.h \
+		../RicardoGoBang/pvpwindow.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
+		../RicardoGoBang/dialogabout.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o chess.o ../RicardoGoBang/chess.cpp
+
+game.o: ../RicardoGoBang/game.cpp ../RicardoGoBang/game.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o game.o ../RicardoGoBang/game.cpp
+
+dialogchoosepiece.o: ../RicardoGoBang/dialogchoosepiece.cpp ../RicardoGoBang/dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QButtonGroup \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+		ui_dialogchoosepiece.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtCore.framework/Headers/QDebug \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtCore.framework/Headers/qdebug.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialogchoosepiece.o ../RicardoGoBang/dialogchoosepiece.cpp
+
+dialoggameover.o: ../RicardoGoBang/dialoggameover.cpp ../RicardoGoBang/dialoggameover.h \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/QDialog \
+		../../Qt5.10.1/5.10.1/clang_64/lib/QtWidgets.framework/Headers/qdialog.h \
+		ui_dialoggameover.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o dialoggameover.o ../RicardoGoBang/dialoggameover.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp
@@ -894,6 +1011,12 @@ moc_dialogabout.o: moc_dialogabout.cpp
 
 moc_chess.o: moc_chess.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_chess.o moc_chess.cpp
+
+moc_dialogchoosepiece.o: moc_dialogchoosepiece.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialogchoosepiece.o moc_dialogchoosepiece.cpp
+
+moc_dialoggameover.o: moc_dialoggameover.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_dialoggameover.o moc_dialoggameover.cpp
 
 ####### Install
 
