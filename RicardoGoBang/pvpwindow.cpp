@@ -14,7 +14,7 @@ PVPWindow::PVPWindow(QWidget *parent) :
     Chess *chess = new Chess(ui->widget_chess);
     this->chess = chess;
     gameMode = 1;
-    connect(chess,SIGNAL(start_emit(int)),this,SLOT(read_emit(int)));
+    connect(chess,SIGNAL(start_emit(int , int ,int)),this,SLOT(read_emit(int,int,int)));
 }
 
 PVPWindow::~PVPWindow()
@@ -33,25 +33,25 @@ void PVPWindow::on_btn_back_clicked()
     gameState = false;
     countPlayer1Use = -1;
     emit sendsignal();
-        this->close();
+    this->close();
 }
 
 void PVPWindow::on_btn_start_clicked()
 {
-      gameState = true;
-      DialogChoosePiece *dialog = new DialogChoosePiece(this);
-      dialog->show();
-      connect(dialog,SIGNAL(restart_emit()),this,SLOT(restartGame()));
+    gameState = true;
+    DialogChoosePiece *dialog = new DialogChoosePiece(this);
+    dialog->show();
+    connect(dialog,SIGNAL(restart_emit()),this,SLOT(restartGame()));
 }
 
 void PVPWindow::on_btn_undo_clicked()
 {
     gameState = true;
-       this->chess->deleteChessBoardXY();
+    this->chess->deleteChessBoardXY();
     update();
 }
 
-void PVPWindow::read_emit(int num){
+void PVPWindow::read_emit(int num,int score1 , int score2){
     QString str = QString("STEP： ")+QString::number(num,10)+QString(" 步");
     ui->label_step->setText(str);
 }

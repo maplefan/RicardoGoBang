@@ -24,7 +24,7 @@ signals:
 
 private slots:
 
-    void read_emit(int);
+    void read_emit(int,int,int);
 
     void restartGame();
 
@@ -35,7 +35,6 @@ private slots:
     void on_btn_start_clicked();
 
     void on_btn_undo_clicked();
-
 
     void on_btn_giveup_clicked();
 

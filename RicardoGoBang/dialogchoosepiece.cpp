@@ -1,9 +1,13 @@
 #include "dialogchoosepiece.h"
 #include "ui_dialogchoosepiece.h"
 #include <QDebug>
+#include <iostream>
 
 extern int countWhoFirst;
 extern int countPlayer1Use;
+extern bool isFirstStep;
+extern int chessBoard[15][15];
+extern int gameMode;
 
 DialogChoosePiece::DialogChoosePiece(QWidget *parent) :
     QDialog(parent),
@@ -38,6 +42,7 @@ bool DialogChoosePiece::getPlayer1Use(){
 
 void DialogChoosePiece::on_buttonBox_accepted()
 {
+    isFirstStep = true;
     int temp = groupButtonWhoFirst->checkedId();
     if(temp == 0){
         whoFirst = false;//黑子
@@ -56,18 +61,23 @@ void DialogChoosePiece::on_buttonBox_accepted()
     if(getWhoFirst() == false && getPlayer1Use() == false){
           countWhoFirst = 0;//黑色先手
           countPlayer1Use = 0;//玩家1为黑色
+          isFirstStep = true;
+
     }
     else if(getWhoFirst() == false && getPlayer1Use() == true){
         countWhoFirst = 0;//黑色先手
         countPlayer1Use = 1;//玩家1为白色
+        isFirstStep = true;
     }
     else if(getWhoFirst() == true && getPlayer1Use() == false){
         countWhoFirst = 1;//白色先手
         countPlayer1Use = 0;//玩家1为黑色
+        isFirstStep = true;
     }
     else if(getWhoFirst() == true && getPlayer1Use() == true){
         countWhoFirst = 1;//白色先手
         countPlayer1Use = 1;//玩家1为白色
+        isFirstStep = true;
     }
     restart_emit();
 }

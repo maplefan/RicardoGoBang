@@ -30,7 +30,11 @@ SOURCES += \
     chess.cpp \
     game.cpp \
     dialogchoosepiece.cpp \
-    dialoggameover.cpp
+    dialoggameover.cpp \
+    possiblepositionmanager.cpp \
+    chessai.cpp \
+    acsearcher.cpp \
+    chessengine.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -40,7 +44,11 @@ HEADERS += \
     chess.h \
     game.h \
     dialogchoosepiece.h \
-    dialoggameover.h
+    dialoggameover.h \
+    acsearcher.h \
+    possiblepositionmanager.h \
+    chessengine.h \
+    chessai.h
 
 FORMS += \
         mainwindow.ui \

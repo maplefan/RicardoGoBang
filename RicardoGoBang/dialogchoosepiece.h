@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QButtonGroup>
+#include <chessengine.h>
 
 namespace Ui {
 class DialogChoosePiece;

@@ -24,14 +24,24 @@ signals:
 
 private slots:
 
+    void read_emit(int,int,int);
+
     void on_btn_back_clicked();
 
     void on_btn_about_clicked();
 
     void on_btn_start_clicked();
 
+    void restartGame();
+
+    void on_btn_undo_clicked();
+
+    void on_btn_giveup_clicked();
+
 private:
     Ui::PVMWindow *ui;
+    Chess *chess;
+        void paintEvent(QPaintEvent *);
 };
 
 #endif // PVMWINDOW_H

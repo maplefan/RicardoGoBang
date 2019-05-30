@@ -264,8 +264,8 @@
      <string notr="true">color:#f65314</string>
     </property>
     <property name="text">
-     <string>当前胜率：
-白：黑 = 50% ： 50%</string>
+     <string>局势得分：
+黑子：白子 = 0 ： 0</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -281,6 +281,48 @@
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout"/>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>620</x>
+      <y>160</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#1FB922</string>
+    </property>
+    <property name="text">
+     <string>玩家：</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>720</x>
+      <y>160</y>
+      <width>60</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Microsoft Sans Serif</family>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color:#1FB922</string>
+    </property>
+    <property name="text">
+     <string>电脑：</string>
+    </property>
    </widget>
   </widget>
  </widget>

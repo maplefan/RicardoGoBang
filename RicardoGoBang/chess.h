@@ -8,6 +8,8 @@
 #include <game.h>
 #include <vector>
 #include <dialoggameover.h>
+#include <chessengine.h>
+
 namespace Ui {
 class Chess;
 }
@@ -33,7 +35,7 @@ public:
     void gameOver(int ,int);
 
 signals:
-    void start_emit(int);
+    void start_emit(int,int,int);
 
 private:
     Ui::Chess *ui;
@@ -44,7 +46,6 @@ private:
     void paintEvent(QPaintEvent *);
     void mouseMoveEvent(QMouseEvent *event);
     void mouseReleaseEvent(QMouseEvent* event);
-    int chessBoard[15][15];//棋盘
     std::vector<int>chessBoardX;//记录步数的X
     std::vector<int>chessBoardY;//记录步数的Y
 
