@@ -219,9 +219,9 @@
    <widget class="QLabel" name="label_step">
     <property name="geometry">
      <rect>
-      <x>630</x>
+      <x>600</x>
       <y>20</y>
-      <width>140</width>
+      <width>200</width>
       <height>50</height>
      </rect>
     </property>
@@ -246,9 +246,9 @@
    <widget class="QLabel" name="label_rate">
     <property name="geometry">
      <rect>
-      <x>609</x>
+      <x>600</x>
       <y>89</y>
-      <width>171</width>
+      <width>200</width>
       <height>41</height>
      </rect>
     </property>
