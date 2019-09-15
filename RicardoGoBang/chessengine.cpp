@@ -217,7 +217,12 @@ int evaluatePoint(int chessBoard[BOARD_WIDTH][BOARD_WIDTH], Position p) {
             result += paternScores[tmp[j]];
         }
     }
-
+    //在边界情况下分值变动
+    if(p.x == 0 || p.x == 14 || p.y == 0 || p.y == 14){
+        if(result <= 2000){
+            result = 0;
+        }
+    }
     return result;
 }
 

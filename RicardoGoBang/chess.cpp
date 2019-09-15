@@ -37,7 +37,7 @@ Chess::Chess(QWidget *parent) :
     step = 0;//步数初始化为0
     whoWin = 0;//赢家判断标志初始化为0
     ChessEngine::beforeStart();
-    ChessEngine::setLevel(6);
+    ChessEngine::setLevel(9);
 }
 
 Chess::~Chess()
@@ -223,7 +223,7 @@ void Chess::mouseReleaseEvent(QMouseEvent* event){
                 update();
             }
             else if(gameMode == 2){//pvm
-                if((step + countWhoFirst )%2 == 0){//黑子先手，黑子玩家
+                if(countWhoFirst  == 0){//黑子先手，黑子玩家
                     if(countPlayer1Use == 0){
                         chessBoard[moveX][moveY] = 1;
                         addChessBoardXY(moveX,moveY);
@@ -268,6 +268,7 @@ void Chess::mouseReleaseEvent(QMouseEvent* event){
                     }
 
                     else if(countPlayer1Use == 1){//黑子先手 白子玩家
+                        qDebug("sssssscore:%d",countPlayer1Use);
                         chessBoard[moveX][moveY] = 1;
                         addChessBoardXY(moveX,moveY);
                         step++;
